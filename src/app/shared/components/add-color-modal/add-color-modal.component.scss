@@ -1,0 +1,9 @@
+.p-field{
+  display: inline-block;
+  label{
+    padding-right: 10px;
+  }
+}
+.p-field:first-child{
+  margin-right: 10px;
+}

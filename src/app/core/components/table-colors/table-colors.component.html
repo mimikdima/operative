@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <p-table [value]="colors">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+        <button pButton label="New Color" class="" icon="pi pi-plus" (click)="addColor()"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Color Name</th>
+        <th>Color</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td (click)="randomColorDialog(item, rowIndex)" [ngStyle]="{'background': item.color}"><div ></div></td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+    <app-random-color-modal [dialogRandomColor]="dialogRandomColor"
+                            [selectedRow]="selectedRow"
+                            (closeRandomColorModal)="closeRandomColorModal($event)"
+                            (setRandomColorModal)="setRandomColor($event)"
+    ></app-random-color-modal>
+
+
+  <app-add-color-modal [dialogNewColor]="dialogNewColor"
+                       [colors]="colors"
+                       (closeNewColorModal)="closeNewColorModal($event)"
+  ></app-add-color-modal>
+</div>
